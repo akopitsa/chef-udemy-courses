@@ -1,0 +1,8 @@
+This server is the property of Udemy
+ with TEMPLATE
+  IPADDRESS: <%= node['ipaddress'] %>
+  HOSTNAME: <%= node['hostname'] %>
+  CPU: <%= node['cpu']['0']['mhz'] %>
+  MEMORY: <%= node['memory']['total'] %>
+  NAME: <%= @name %>
+
