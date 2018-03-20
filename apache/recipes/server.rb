@@ -19,12 +19,13 @@ end
 
 template '/var/www/html/index.html' do
   source 'index.html.erb'
+  notifies :restart, 'service[httpd]', :immediately
 end
 
 bash "inline script" do
   user "root"
   code "mkdir -p /var/www/mysites/ && chown -R apache /var/www/mysites/"
-  no_if  '[ -d /var/www/mysites/ ]'
+  not_if  '[ -d /var/www/mysites/ ]'
 #  only_if
 #  not_if do
 #    File.directory?('/var/www/mysites/')
